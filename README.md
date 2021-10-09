@@ -5,12 +5,12 @@ Simple authentication setup using Firebase 9 and react-bootstrap.
 ## Firebase setup
 setup a .env.local file with following keys and substitute values from your firebase console after = without quotes :
 
-REACT_APP_FIREBASE_apiKey=
-REACT_APP_FIREBASE_authDomain=
-REACT_APP_FIREBASE_projectId=
-REACT_APP_FIREBASE_storageBucket=
-REACT_APP_FIREBASE_messagingSenderId=
-REACT_APP_FIREBASE_appId=
+REACT_APP_FIREBASE_apiKey= \
+REACT_APP_FIREBASE_authDomain= \
+REACT_APP_FIREBASE_projectId= \
+REACT_APP_FIREBASE_storageBucket= \
+REACT_APP_FIREBASE_messagingSenderId= \
+REACT_APP_FIREBASE_appId= \
 
 ## Run the script
 
