@@ -1,15 +1,14 @@
 import { useRef, useState } from "react"
 import { Container, Card, Form, Button, Alert } from "react-bootstrap"
-import { Link, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { useAuth } from "../contexts/AuthContext"
 
-const Login = () => {
+const ForgotPassword = () => {
     const emailRef = useRef()
-    const passwordRef = useRef()
-    const { login } = useAuth()
+    const { resetPassword } = useAuth()
     const [loading, setloading] = useState(false)
     const [error, seterror] = useState('')
-    const history = useHistory()
+    const [message, setmessage] = useState('')
 
 
     const handleSubmit = async (e) => {
@@ -18,8 +17,8 @@ const Login = () => {
         try {
             seterror('')
             setloading(true)
-            await login(emailRef.current.value, passwordRef.current.value)
-            history.push("/")
+            await resetPassword(emailRef.current.value)
+            setmessage("Check your mail for further instructions")
 
         } catch (error) {
             seterror(`${error.code}. Try again..`)
@@ -35,7 +34,8 @@ const Login = () => {
                 <Card className="mt-5">
                     <Card.Body>
                         {error && <Alert variant='danger' >{error}</Alert>}
-                        <h2 className="text-center mb-4">Log In</h2>
+                        {message && <Alert variant='success' >{message}</Alert>}
+                        <h2 className="text-center mb-4">Recover Password</h2>
                         <hr />
                         <Form onSubmit={handleSubmit}>
                             <Form.Group className="mb-3" controlId="email">
@@ -43,19 +43,13 @@ const Login = () => {
                                 <Form.Control type="email" placeholder="name@example.com" required ref={emailRef} />
                             </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="password">
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control type="password" placeholder="Password"
-                                    required ref={passwordRef} />
-                            </Form.Group>
-
                             <Button disabled={loading} variant="primary" type="submit" className="w-100 my-3">
-                                Login
+                                Reset Password
                             </Button>
 
                         </Form>
                         <div className="w-100 text-center mt-2">
-                            <Link to='/forgot-password'>Forgot Password?</Link>
+                            <Link to='/login'>Login</Link>
                         </div>
 
                     </Card.Body>
@@ -69,4 +63,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default ForgotPassword
