@@ -30,7 +30,6 @@ const SignUp = () => {
             seterror(`${error.code}. Try again..`)
         }
         setloading(false)
-
     }
 
     return (
